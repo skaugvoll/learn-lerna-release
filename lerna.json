@@ -9,8 +9,18 @@
       "ignoreChanges": [
         "*.md",
         ".env"
+      ]
+    },
+    "version": {
+      "allowBranch": [
+        "main",
+        "test-workflow"
       ],
-      "message": "chore(release): release"
+      "message": "chore(release): release",
+      "ignoreChanges": [
+        "**/*.md",
+        ".env"
+      ]
     }
   }
 }
