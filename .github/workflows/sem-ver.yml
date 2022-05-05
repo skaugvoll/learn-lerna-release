@@ -15,4 +15,4 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
-      - run: npx lerna changed
+      - run: npx lerna-semantic-release pre
