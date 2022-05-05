@@ -1,32 +1,45 @@
-name: Release
-
+name: Publish
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    types: [opened, synchronize]
+    types: [closed]
     branches:
       - main
-  workflow_dispatch:
+      - production
 
 jobs:
-  release:
-    name: Update version number
+  publish:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - name: "Checkout"
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v1
+      - name: "Use NodeJS 14"
+        uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: "14"
 
-      - name: Bump versions and publish packages
+      - name: Set Git config
         run: |
-          yarn version:ci
-          yarn publish:ci
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
+
+      - name: "(main):pre-release"
+        if: ${{ github.base_ref }} = main
+        run: npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "(prod): release"
+        if: ${{ github.base_ref }} = production
+        run: npx lerna version --conventional-commits --conventional-graduate --yes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish release
+        run: npx lerna publish from-git --yes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
