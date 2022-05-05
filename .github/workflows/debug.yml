@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "github context"
-      - run: echo ${{github}}
+        run: echo ${{github}}
