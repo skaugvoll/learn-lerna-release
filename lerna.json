@@ -1,0 +1,16 @@
+{
+  "npmClient": "npm",
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "*.md",
+        ".env"
+      ],
+      "message": "chore(release): release"
+    }
+  }
+}
