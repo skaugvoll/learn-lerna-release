@@ -6,6 +6,9 @@ on:
       - main
       - production
 
+permissions:
+  repository-projects: write
+
 jobs:
   publish:
     if: github.event.pull_request.merged == true
