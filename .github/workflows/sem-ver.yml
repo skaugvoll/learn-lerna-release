@@ -27,22 +27,21 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
 
-      - name: "(main):pre-release"
-        if: ${{ github.base_ref }} = main
-        run: npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: "(main):pre-release"
+      #   if: ${{ github.base_ref }} = main
+      #   run: npx lerna version --conventional-commits --conventional-prerelease --preid beta --yes
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "(prod): release"
-        if: ${{ github.base_ref }} = production
-        run: npx lerna version --conventional-commits --conventional-graduate --yes
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: "(prod): release"
+      #   if: ${{ github.base_ref }} = production
+      #   run: npx lerna version --conventional-commits --conventional-graduate --yes
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish release
-        run: npx lerna publish from-git --yes
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Publish release
+      #   run: npx lerna publish from-git --yes
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

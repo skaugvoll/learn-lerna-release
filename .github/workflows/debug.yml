@@ -1,0 +1,11 @@
+name: debug
+
+on:
+  push:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "github context"
+      - run: echo ${{github}}
