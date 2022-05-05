@@ -6,13 +6,13 @@ on:
     types: [opened, synchronize]
   workflow_dispatch:
 
-  jobs:
-    release:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - uses: actions/setup-node@v3
-          with:
-            node-version: 16.x
-            cache: npm
-        - run: npx lerna-semantic-release pre
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: npm
+      - run: npx lerna-semantic-release pre
