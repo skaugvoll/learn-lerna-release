@@ -3,6 +3,15 @@ on:
   push:
     tags:
       - "**"
+  release:
+    types:
+      - published
+      - unpublished
+      - created
+      - edited
+      - deleted
+      - prereleased
+      - released
 
 jobs:
   create-pr:
