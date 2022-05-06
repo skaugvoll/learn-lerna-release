@@ -1,20 +1,17 @@
 name: Create Prod Request
 on:
-  push:
-    tags:
-      - "**"
   release:
     types:
-      - published
-      - unpublished
       - created
-      - edited
-      - deleted
-      - prereleased
-      - released
+      # - published
+      # - unpublished
+      # - edited
+      # - deleted
+      # - prereleased
+      # - released
 
 jobs:
-  create-pr:
+  pre:
     runs-on: ubuntu-latest
     steps:
       - name: "test trigger"
@@ -25,9 +22,29 @@ jobs:
         id: package-version-a
         uses: martinbeentjes/npm-get-version-action@main
         with:
-          path: pacakges/a/package.json
+          path: packages/a/package.json
       - name: Trigger that was used
         env:
           TRIGGER_EVENT: ${{ toJSON(github.event) }}
           TRIGGER_EVENT_NAME: ${{github.event_name}}
         run: echo $TRIGGER_EVENT && echo $TRIGGER_EVENT_NAME
+  create-pr:
+    runs-on: ubuntu-latest
+    needs:
+      - pre
+    steps:
+      - uses: actions/checkout@v2
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "main" # If blank, default: triggered branch
+          destination_branch: "production" # If blank, default: master
+          pr_title: "Create Deploy Job for ${{ github.event.release.tag_name }}" # Title of pull request
+          pr_body: ":rocket: " # Full markdown support, requires pr_title to be set
+          # pr_template: ".github/PULL_REQUEST_TEMPLATE.md" # Path to pull request template, requires pr_title to be set, excludes pr_body
+          # pr_reviewer: "wei,worker" # Comma-separated list (no spaces)
+          # pr_assignee: "wei,worker" # Comma-separated list (no spaces)
+          pr_label: "deployment" # Comma-separated list (no spaces)
+          pr_draft: true # Creates pull request as draft
+          pr_allow_empty: true # Creates pull request even if there are no changes
+          github_token: ${{ secrets.LERNA_RELEASE_TOKEN }}
