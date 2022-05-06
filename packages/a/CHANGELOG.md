@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.11](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.10...a@1.2.0-beta.11) (2022-05-06)
+
+
+### Bug Fixes
+
+* do not create pr as draft ([3648121](https://github.com/skaugvoll/learn-lerna-release/commit/3648121990c34f1a2269bd9cbf688df37fff9962))
+
+
+
+
+
 # [1.2.0-beta.10](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.9...a@1.2.0-beta.10) (2022-05-06)
 
 
