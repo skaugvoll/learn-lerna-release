@@ -2,7 +2,8 @@ name: Create Prod Request
 on:
   release:
     types:
-      - "published"
+      # - "published"
+      - "created"
 
 jobs:
   create-pr:

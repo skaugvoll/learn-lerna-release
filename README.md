@@ -1,6 +1,6 @@
 # learn-lerna-release
 repo to lern the Lerna release cycle, commands and configuration
-(test)[https://github.com/lerna/lerna/blob/main/commands/version/README.md#--allow-branch-glob]
+[Docs](https://github.com/lerna/lerna/blob/main/commands/version/README.md#--allow-branch-glob)
 
 # Troubles
 1. needed to run `npm install --legacy-peer-deps`, to get the commitizen `cz-conventional-changelog` to install with lerna version >=4.x.x
@@ -15,3 +15,5 @@ repo to lern the Lerna release cycle, commands and configuration
     }
   }
 }`
+
+4. `lerna publish` Lerna will never publish packages which are marked as `private` ("private": true in the package.json). [docs](https://github.com/lerna/lerna/issues/2111)
