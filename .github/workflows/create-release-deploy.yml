@@ -1,0 +1,19 @@
+name: Create Prod Request
+on:
+  release:
+    types:
+      - "prereleased"
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "test trigger"
+        env:
+          MSG: I' was triggered
+        run: echo $MSG
+      - name: "Print version Package A"
+        id: package-version-a
+        uses: martinbeentjes/npm-get-version-action@main
+        with:
+          path: pacakges/a/package.json
