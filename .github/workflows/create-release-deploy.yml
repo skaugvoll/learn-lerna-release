@@ -2,7 +2,7 @@ name: Create Prod Request
 on:
   push:
     tags:
-      - "*"
+      - "**"
 
 jobs:
   create-pr:
