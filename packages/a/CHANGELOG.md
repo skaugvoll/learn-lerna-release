@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.5](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.4...a@1.2.0-beta.5) (2022-05-06)
+
+
+### Bug Fixes
+
+* **ci:** trying to trigger workflow on lerna version command ([879a91e](https://github.com/skaugvoll/learn-lerna-release/commit/879a91e0375849d1cc0bfbbf8f69cccde9df92fb))
+
+
+
+
+
 # [1.2.0-beta.4](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.3...a@1.2.0-beta.4) (2022-05-06)
 
 
