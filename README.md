@@ -19,3 +19,5 @@ repo to lern the Lerna release cycle, commands and configuration
 4. `lerna publish` Lerna will never publish packages which are marked as `private` ("private": true in the package.json). [docs](https://github.com/lerna/lerna/issues/2111)
 
 5. When using the built in GITHUB.TOKEN secret to update repository, the action will never trigger a new workflow to start. This is by design, thus using a custom personal access token would be a good way to go! [DOCS](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow)
+
+:crown:
