@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.10](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.9...a@1.2.0-beta.10) (2022-05-06)
+
+
+### Bug Fixes
+
+* said that source and dest branch was same ([5237d64](https://github.com/skaugvoll/learn-lerna-release/commit/5237d64f17fcdd76c93363c1a810550bc9b17644))
+
+
+
+
+
 # [1.2.0-beta.9](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.8...a@1.2.0-beta.9) (2022-05-06)
 
 
