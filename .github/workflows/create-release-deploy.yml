@@ -26,3 +26,8 @@ jobs:
         uses: martinbeentjes/npm-get-version-action@main
         with:
           path: pacakges/a/package.json
+      - name: Trigger that was used
+        env:
+          TRIGGER_EVENT: ${{ toJSON(github.event) }}
+          TRIGGER_EVENT_NAME: ${{github.event_name}}
+        run: echo $TRIGGER_EVENT && echo $TRIGGER_EVENT_NAME
