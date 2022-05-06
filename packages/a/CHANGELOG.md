@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.4](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.3...a@1.2.0-beta.4) (2022-05-06)
+
+
+### Bug Fixes
+
+* **test:** 2 ([fdd55d3](https://github.com/skaugvoll/learn-lerna-release/commit/fdd55d3a371f9d18ed14898e9e887baef67dcac2))
+
+
+
+
+
 # [1.2.0-beta.3](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.2...a@1.2.0-beta.3) (2022-05-06)
 
 
