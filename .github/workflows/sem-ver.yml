@@ -40,6 +40,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish release
-        run: npx lerna publish from-git --yes
+        run: npx lerna publish from-packages --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
