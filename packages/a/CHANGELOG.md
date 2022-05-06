@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.7](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.6...a@1.2.0-beta.7) (2022-05-06)
+
+
+### Bug Fixes
+
+* getting tired of not getting the next pipeline triggered ([2735229](https://github.com/skaugvoll/learn-lerna-release/commit/27352290d524e27d7c746b2af94c1e35bd5935ac))
+
+
+
+
+
 # [1.2.0-beta.6](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.5...a@1.2.0-beta.6) (2022-05-06)
 
 
