@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.6](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.5...a@1.2.0-beta.6) (2022-05-06)
+
+
+### Bug Fixes
+
+* **token:** try to use personal access token instead of gh.token ([414b7eb](https://github.com/skaugvoll/learn-lerna-release/commit/414b7eb3a7632f63f94a533150af71be93a3c265))
+
+
+
+
+
 # [1.2.0-beta.5](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.4...a@1.2.0-beta.5) (2022-05-06)
 
 
