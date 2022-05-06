@@ -2,6 +2,18 @@
 repo to lern the Lerna release cycle, commands and configuration
 [Docs](https://github.com/lerna/lerna/blob/main/commands/version/README.md#--allow-branch-glob)
 
+# Strategy
+- Pre-release
+    - On `closed` `merge request` to main
+        - Server pre-release
+        - Create pr to production
+- release
+    - On `open` `merge_request` to `production`
+      - Sem-ver release 
+    - On `closed` `merge_request` to `production`
+      - auto deploy to production 
+
+
 # Troubles
 1. needed to run `npm install --legacy-peer-deps`, to get the commitizen `cz-conventional-changelog` to install with lerna version >=4.x.x
 
