@@ -1,9 +1,12 @@
 name: Deploy production
 
 on:
-  push:
-    branches:
-      - production
+  release:
+    types:
+      - released
+  # push:
+  #   branches:
+  #     - production
 
 jobs:
   deploy:
@@ -11,5 +14,8 @@ jobs:
     steps:
       - name: simulate deploy
         env:
-          H: "hello"
-        run: echo $H
+          RT: ${{ github.ref_type }}
+          R: ${{ github.ref }}
+        run: |
+          echo "RT -> $RT"
+          echo "R -> $R"

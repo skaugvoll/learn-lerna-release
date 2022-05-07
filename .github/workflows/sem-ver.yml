@@ -36,8 +36,10 @@ jobs:
 
       - name: "release"
         if: ${{ github.base_ref == 'production' }}
-        run: npx lerna version --conventional-commits --conventional-graduate --create-release github --yes
+        run: |
+          npx lerna version --conventional-commits --conventional-graduate --create-release github --yes
+          npx lerna publish from-git --create-release github --yes
 
-      # since all our packages are private, this will never run, see Readme.md
-      - name: Publish release
-        run: npx lerna publish from-git --create-release github --yes
+      # # since all our packages are private, this will never run, see Readme.md
+      # - name: Publish release
+      #   run: npx lerna publish from-git --create-release github --yes
