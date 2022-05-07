@@ -1,0 +1,15 @@
+name: Deploy production
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: simulate deploy
+        env:
+          H: "hello"
+        run: echo $H
