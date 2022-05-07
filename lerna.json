@@ -14,7 +14,7 @@
     "version": {
       "allowBranch": [
         "main",
-        "test-workflow"
+        "production"
       ],
       "message": "chore(release): release",
       "ignoreChanges": [
