@@ -2,7 +2,7 @@ name: Create Prod Request
 on:
   release:
     types:
-      - created
+      - prereleased
 
 jobs:
   pre:
