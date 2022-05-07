@@ -14,6 +14,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+
 # [1.2.0-beta.12](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.11...a@1.2.0-beta.12) (2022-05-06)
 
 
