@@ -9,11 +9,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "echo 'test cmd root dir'",
-    "version:ci": "lerna version --yes --conventional-commits --create-release github",
-    "publish:ci": "lerna publish from-package --yes",
-    "version:ci:beta": "lerna version --conventional-commits --conventional-prerelease --preid beta --yes",
-    "version:ci:release": "lerna version --conventional-commits --conventional-graduate --yes"
+    "test": "echo 'test cmd root dir'"
   },
   "config": {
     "commitizen": {
