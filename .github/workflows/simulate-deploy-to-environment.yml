@@ -1,0 +1,16 @@
+name: Simulate deploy to github environment
+
+on:
+  push:
+    branches:
+      - sisk-environments
+
+jobs:
+  sim-deploy:
+    name: Simulate a deploy job and tag github environment
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Simulate step that deployes
+        run: |
+          echo "Simulate deployment, what does the job.environment do?"
