@@ -18,6 +18,8 @@ the Tile is clickable and takes you to a new page `Deployments/History`
 This works, github creates the environment for you :smile:
 
 ## Jobs with Strategy.Matrix
+
+### Matrix and dynamic environment name
 This example is done using a matrix with package-a and package-b as value, and passing the matrix values as suffix to environment
 Github creates the dev-${{matrix.package}} environment for us
 
@@ -28,3 +30,28 @@ It actually does all the deployments. this is equal to having one environment fo
 Resulting on different environments on code page (repo frontpage)
 
 ![Matrix deploy, different envs, code page](.resources/gh-env-matrix_deploy_diff_envs_code_page_tile.png)
+
+
+###  When we deploy dont have a separate environment for package
+We will use a matrix job with the same two matrix values as above (package-a, package-b), but they will deploy to the same environment dev-matrix-static
+
+![Matrix deploy, static envs, pr page](.resources/gh-env-matrix_deploy_static_env_pr_tile.png)
+
+code page:
+
+![Matrix deploy, static envs, code page](.resources/gh-env-matrix_deploy_static_env_code_page_tile.png)
+
+Deployments/history
+
+![Matrix deploy, static envs, deployment/history page](.resources/gh-env-matrix_deploy_static_env_deployment_history_page_tile.png)
+
+as we can see it stacks all the deploy jobs in the history, so the last package deployed is marked as the last deployment
+
+
+# Conclusion
+## Microservice projects, Deployes all packages at once
+For multi-package / microservice projects that deployes all the packages together, we should use one static environment
+and then have a separate job for marking the deployment as "deployed". Following the code page and or the deployment/history page, we can go to the pull_request and workflow that did the deploy job. Which gives us an indication of what changes was deployed
+
+## Microservice projects, Deployes packages individually
+Use one environment (dynamic example) that has <environment.stage>-<microservice-name>, then we can track all deployments (history) for each individual package
