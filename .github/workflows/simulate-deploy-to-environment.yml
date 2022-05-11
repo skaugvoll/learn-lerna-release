@@ -40,3 +40,36 @@ jobs:
       - name: Simulate step that deployes
         run: |
           echo "Simulate ${{matrix.package}} deployment, what does the job.environment do now?"
+  deploy-failes:
+    name: simulate that one job deploy-failes
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - package: a
+            status: 0 # ok
+          - package: b
+            status: 1 # failes
+    steps:
+      - name: echo-matrix-values
+        run: |
+          echo ${{matrix.package}} ${{matrix.status}}
+          if [ ${{matrix.status != 0 }} ]
+          then
+            exit 1
+          else
+            exit 0
+          fi
+  set-deploy-status:
+    needs: [deploy-failes]
+    runs-on: ubuntu-latest
+    environment: manual-deploy-mark
+    steps:
+      - name: mark deploy status
+        run: |
+          if [ ${{needs.deploy-failes.result != 'success' }}]
+          then
+            exit 1
+          else
+            exit 0
+          fi
