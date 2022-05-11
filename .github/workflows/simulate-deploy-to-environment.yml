@@ -14,10 +14,23 @@ jobs:
       - name: Simulate step that deployes
         run: |
           echo "Simulate deployment, what does the job.environment do now?"
-  sim-matrix-deploy:
+  sim-matrix-deploy-dynamic-envs:
     name: Simulate a deploy job and tag github environment
     runs-on: ubuntu-latest
     environment: dev-${{matrix.package}}
+    strategy:
+      matrix:
+        package:
+          - package-a
+          - package-b
+    steps:
+      - name: Simulate step that deployes
+        run: |
+          echo "Simulate ${{matrix.package}} deployment, what does the job.environment do now?"
+  sim-matrix-deploy-static-env:
+    name: Simulate a deploy job and tag github environment
+    runs-on: ubuntu-latest
+    environment: dev-matrix-static
     strategy:
       matrix:
         package:
