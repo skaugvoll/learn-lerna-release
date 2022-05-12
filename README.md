@@ -1,25 +1,25 @@
 # learn-lerna-release
-repo to lern the Lerna release cycle, commands and configuration
+Repo to lern the Lerna release cycle, commands and configuration
 [Docs](https://github.com/lerna/lerna/blob/main/commands/version/README.md#--allow-branch-glob)
 
 # Strategy
 - Pre-release
-    - On `closed` `merge request` to main
+    - On `closed` `merge request` to `main`
         - Server pre-release
         - Create pr to production
-- release
-    - On `open` `merge_request` to `production`
-      - Sem-ver release 
+- Release
     - On `closed` `merge_request` to `production`
-      - auto deploy to production 
+      - Sem-ver release & publish
+    - On `tag` `release`
+      - Deploy
 
 
-# Troubles
-1. needed to run `npm install --legacy-peer-deps`, to get the commitizen `cz-conventional-changelog` to install with lerna version >=4.x.x
-
-2. For lerna versioning and publish command in workflow, we either need to assign `permissions` to github.token in the workflow file, or we can just change the default permission for github workflows to be read and write, instead of only read (default). This is done through repository settings
-
-3. For learna to `allow versioning on other branches than main` (new default) we need to add some configuration to `lerna.json`
+# Pre-requisits:
+1. run `npm install --legacy-peer-deps`, to get the commitizen `cz-conventional-changelog` to install with lerna version >=4.x.x
+2. Create a Github Personal Access Token, 
+   1. permissions to read and write to repository, and trigger workflows
+   2. Add token to Github action secrets, so we can use it in github actions/workflows
+3. allow versioning on other branches than main, `lerna.json`
    1. `{
   "command": {
     "version": {
@@ -28,6 +28,9 @@ repo to lern the Lerna release cycle, commands and configuration
   }
 }`
 
-4. `lerna publish` Lerna will never publish packages which are marked as `private` ("private": true in the package.json). [docs](https://github.com/lerna/lerna/issues/2111)
+# Noteworthy
+1. `lerna publish` Lerna will never publish packages which are marked as `private` ("private": true in the package.json). [docs](https://github.com/lerna/lerna/issues/2111)
 
-5. When using the built in GITHUB.TOKEN secret to update repository, the action will never trigger a new workflow to start. This is by design, thus using a custom personal access token would be a good way to go! [DOCS](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow)
+2. When using the `built in` `GITHUB.TOKEN` secret to update repository, the action will **never** trigger a new workflow to start. This is by design, thus using a custom personal access token would be a good way to go! [DOCS](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow)
+
+3. If no changes found, sem-ver workflow will fail
