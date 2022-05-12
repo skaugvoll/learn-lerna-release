@@ -54,7 +54,7 @@ jobs:
     steps:
       - name: echo-matrix-values
         run: |
-          echo ${{matrix.package}} ${{matrix.status}}
+          echo ${{matrix.package}} ${{matrix.status}} ${{matrix.status != 0 }}
           if [ ${{ matrix.status != 0 }} ]
           then
             exit 1
