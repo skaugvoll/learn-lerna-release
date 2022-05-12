@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.21](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.20...a@1.2.0-beta.21) (2022-05-12)
+
+
+### Bug Fixes
+
+* did not work with global env vars ? ([e0c173e](https://github.com/skaugvoll/learn-lerna-release/commit/e0c173e85b6154953231451f8db578a8d3f61b49))
+
+
+
+
+
 # [1.2.0-beta.20](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.19...a@1.2.0-beta.20) (2022-05-12)
 
 
