@@ -57,23 +57,24 @@ jobs:
         run: |
           echo ${{matrix.package}} ${{matrix.status}} ${{matrix.status != 0 }}
           if [ ${{matrix.status}} == 0 ]; then
-            echo "Excellent"
-          else
-            echo "Bad"
+            exit 0
+          else 
+            exit 1
           fi
-  # set-deploy-status:
-  #   if: ${{ always() }}
-  #   needs: [deploy-failes]
-  #   runs-on: ubuntu-latest
-  #   environment: manual-deploy-mark
-  #   steps:
-  #     - name: mark deploy status
-  #       run: |
-  #         if [ ${{needs.deploy-failes.result != 'success' }}]
-  #         then
-  #           echo "One or more jobs from deploy-failes failed"
-  #           exit 1
-  #         else
-  #           echo "All jobs in deploy-failes was a success"
-  #           exit 0
-  #         fi
+  set-deploy-status:
+    if: ${{ always() }}
+    needs: [deploy-failes]
+    runs-on: ubuntu-latest
+    environment: manual-deploy-mark
+    steps:
+      - name: mark deploy status
+        run: |
+          echo ${{needs.deploy-failes.result}}
+          if [ ${{ needs.deploy-failes.result }} != 'success' ]
+          then
+            echo "One or more jobs from deploy-failes failed"
+            exit 1
+          else
+            echo "All jobs in deploy-failes was a success"
+            exit 0
+          fi
