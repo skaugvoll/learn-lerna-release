@@ -6,40 +6,40 @@ on:
       - sisk-environments
 
 jobs:
-  sim-deploy:
-    name: Simulate a deploy job and tag github environment
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - name: Simulate step that deployes
-        run: |
-          echo "Simulate deployment, what does the job.environment do now?"
-  sim-matrix-deploy-dynamic-envs:
-    name: Simulate a deploy job and tag github environment
-    runs-on: ubuntu-latest
-    environment: dev-${{matrix.package}}
-    strategy:
-      matrix:
-        package:
-          - package-a
-          - package-b
-    steps:
-      - name: Simulate step that deployes
-        run: |
-          echo "Simulate ${{matrix.package}} deployment, what does the job.environment do now?"
-  sim-matrix-deploy-static-env:
-    name: Simulate a deploy job and tag github environment
-    runs-on: ubuntu-latest
-    environment: dev-matrix-static
-    strategy:
-      matrix:
-        package:
-          - package-a
-          - package-b
-    steps:
-      - name: Simulate step that deployes
-        run: |
-          echo "Simulate ${{matrix.package}} deployment, what does the job.environment do now?"
+  # sim-deploy:
+  #   name: Simulate a deploy job and tag github environment
+  #   runs-on: ubuntu-latest
+  #   environment: dev
+  #   steps:
+  #     - name: Simulate step that deployes
+  #       run: |
+  #         echo "Simulate deployment, what does the job.environment do now?"
+  # sim-matrix-deploy-dynamic-envs:
+  #   name: Simulate a deploy job and tag github environment
+  #   runs-on: ubuntu-latest
+  #   environment: dev-${{matrix.package}}
+  #   strategy:
+  #     matrix:
+  #       package:
+  #         - package-a
+  #         - package-b
+  #   steps:
+  #     - name: Simulate step that deployes
+  #       run: |
+  #         echo "Simulate ${{matrix.package}} deployment, what does the job.environment do now?"
+  # sim-matrix-deploy-static-env:
+  #   name: Simulate a deploy job and tag github environment
+  #   runs-on: ubuntu-latest
+  #   environment: dev-matrix-static
+  #   strategy:
+  #     matrix:
+  #       package:
+  #         - package-a
+  #         - package-b
+  #   steps:
+  #     - name: Simulate step that deployes
+  #       run: |
+  #         echo "Simulate ${{matrix.package}} deployment, what does the job.environment do now?"
   deploy-failes:
     name: simulate that one of two job deploy-failes
     runs-on: ubuntu-latest
@@ -56,23 +56,24 @@ jobs:
       - name: echo-matrix-values
         run: |
           echo ${{matrix.package}} ${{matrix.status}} ${{matrix.status != 0 }}
-          if [ ${{ matrix.status != 0 }} ]
-          then
-            exit 1
-          fi
-  set-deploy-status:
-    if: ${{ always() }}
-    needs: [deploy-failes]
-    runs-on: ubuntu-latest
-    environment: manual-deploy-mark
-    steps:
-      - name: mark deploy status
-        run: |
-          if [ ${{needs.deploy-failes.result != 'success' }}]
-          then
-            echo "One or more jobs from deploy-failes failed"
-            exit 1
+          if [ ${{matrix.status}} == 0 ]; then
+            echo "Excellent"
           else
-            echo "All jobs in deploy-failes was a success"
-            exit 0
+            echo "Bad"
           fi
+  # set-deploy-status:
+  #   if: ${{ always() }}
+  #   needs: [deploy-failes]
+  #   runs-on: ubuntu-latest
+  #   environment: manual-deploy-mark
+  #   steps:
+  #     - name: mark deploy status
+  #       run: |
+  #         if [ ${{needs.deploy-failes.result != 'success' }}]
+  #         then
+  #           echo "One or more jobs from deploy-failes failed"
+  #           exit 1
+  #         else
+  #           echo "All jobs in deploy-failes was a success"
+  #           exit 0
+  #         fi
