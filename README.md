@@ -34,3 +34,6 @@ Repo to lern the Lerna release cycle, commands and configuration
 2. When using the `built in` `GITHUB.TOKEN` secret to update repository, the action will **never** trigger a new workflow to start. This is by design, thus using a custom personal access token would be a good way to go! [DOCS](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow)
 
 3. If no changes found, sem-ver workflow will fail
+
+4. If there exists an merge request between master and production and we try to create another one. It will fail silenty, becuase there can only be one merge request between two branches at the same time. But the merge request code content will be updatet.
+   1. So only thing is that PR title can be misleading if specifying version number, as it's the initial version that created pull_request that will be shown, but it can actually be the very last. Thus PR title should be deploy to production environment and not state version, unless there is a way to update the PR_title ? don't think the repo-sync/pull-request@v2 has this functionality
