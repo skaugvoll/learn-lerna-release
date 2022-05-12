@@ -8,10 +8,14 @@ jobs:
   pre:
     runs-on: ubuntu-latest
     steps:
-      - name: "test trigger"
-        env:
-          MSG: I' was triggered
-        run: echo $MSG
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Set Git config
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
       - name: "set up node"
         uses: actions/setup-node@v2
         with:
