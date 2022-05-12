@@ -30,6 +30,10 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
 
+      - name: "Print changes"
+        run: |
+          npx lerna changed --all --json
+
       - name: "pre-release"
         if: ${{ github.base_ref == 'main' }}
         run: npx lerna version --conventional-commits --conventional-prerelease --preid beta --create-release github --yes

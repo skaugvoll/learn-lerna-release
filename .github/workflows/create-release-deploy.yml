@@ -12,11 +12,14 @@ jobs:
         env:
           MSG: I' was triggered
         run: echo $MSG
-      - name: "Print version Package A"
-        id: package-version-a
-        uses: martinbeentjes/npm-get-version-action@main
+      - name: "set up node"
+        uses: actions/setup-node@v2
         with:
-          path: packages/a/package.json
+          node-version: "17"
+      - name: print changes
+        # hopefully this catches changes
+        run: |
+          npx lerna changes --all --json
       - name: Trigger that was used
         env:
           TRIGGER_EVENT: ${{ toJSON(github.event) }}
