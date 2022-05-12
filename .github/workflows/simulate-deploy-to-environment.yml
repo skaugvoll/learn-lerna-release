@@ -43,7 +43,7 @@ jobs:
   deploy-failes:
     name: simulate that one of two job deploy-failes
     runs-on: ubuntu-latest
-    continue-on-error: true
+    # continue-on-error: true
     strategy:
       fail-fast: false # allow one or more jobs to fail, and still run the others
       matrix:
