@@ -19,7 +19,7 @@ jobs:
       - name: print changes
         # hopefully this catches changes
         run: |
-          npx lerna changes --all --json
+          npx lerna changed --all --json
       - name: Trigger that was used
         env:
           TRIGGER_EVENT: ${{ toJSON(github.event) }}
