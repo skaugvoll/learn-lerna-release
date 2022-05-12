@@ -41,26 +41,28 @@ jobs:
         run: |
           echo "Simulate ${{matrix.package}} deployment, what does the job.environment do now?"
   deploy-failes:
-    name: simulate that one job deploy-failes
+    name: simulate that one of two job deploy-failes
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false # allow one or more jobs to fail, and still run the others
       matrix:
         include:
           - package: a
             status: 0 # ok
           - package: b
-            status: 1 # failes
+            status: 1 # failess
     steps:
       - name: echo-matrix-values
         run: |
           echo ${{matrix.package}} ${{matrix.status}}
-          if [ ${{matrix.status != 0 }} ]
+          if [ ${{ matrix.status != 0 }} ]
           then
             exit 1
           else
             exit 0
           fi
   set-deploy-status:
+    if: ${{ always() }}
     needs: [deploy-failes]
     runs-on: ubuntu-latest
     environment: manual-deploy-mark
@@ -69,7 +71,9 @@ jobs:
         run: |
           if [ ${{needs.deploy-failes.result != 'success' }}]
           then
+            echo "One or more jobs from deploy-failes failed"
             exit 1
           else
+            echo "All jobs in deploy-failes was a success"
             exit 0
           fi
