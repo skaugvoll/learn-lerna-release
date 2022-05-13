@@ -35,9 +35,26 @@ jobs:
         env:
           TRIGGER_EVENT: ${{ toJSON(github.event) }}
           TRIGGER_EVENT_NAME: ${{github.event_name}}
-        run: echo $TRIGGER_EVENT && echo $TRIGGER_EVENT_NAME
+        run: |
+          echo $TRIGGER_EVENT
+          echo $TRIGGER_EVENT_NAME
+          echo ${{github.event.release.tag_name}}
+      - name: get-package-tag
+        if: inputs.version == ''
+        id: get-version-number
+        shell: bash
+        run: |
+          string=${{github.event.release.tag_name}}
+          delimiter="@"
+          version=${string#*$delimiter} # remover everything up to (including), delimiter
+          pkg=${string%$delimiter*} # remover everything after (including), delimiter
+          echo "Version: $version \n Pkg: $pkg"
+          echo "::set-output name=version::$version"
+          echo "::set-output name=pkg::$pkg"
     outputs:
       matrix: ${{ steps.find_changed_packages.outputs.matrix }}
+      version: ${{ steps.get-version-number.outputs.version  }}
+      pkg: ${{ steps.get-version-number.outputs.pkg  }}
   build:
     needs: pre
     runs-on: ubuntu-latest
