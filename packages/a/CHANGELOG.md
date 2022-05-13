@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.22](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.21...a@1.2.0-beta.22) (2022-05-13)
+
+
+### Bug Fixes
+
+* **changes:** trigger workflow, with 2 packages changed ([04368f9](https://github.com/skaugvoll/learn-lerna-release/commit/04368f9fdc401973cd9acd30f92985d5ba11cc2c))
+* **testing:** push number 2 on main branch ([0ec054d](https://github.com/skaugvoll/learn-lerna-release/commit/0ec054d51f589229262a5ec5890049c2968aa4ad))
+* **test:** testing creating two merge requests from main to production ([b4bfe68](https://github.com/skaugvoll/learn-lerna-release/commit/b4bfe68cc929f1b039a6bd16a17114decbf37d22))
+
+
+
+
+
 # [1.2.0-beta.21](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.2.0-beta.20...a@1.2.0-beta.21) (2022-05-12)
 
 
