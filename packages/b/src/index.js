@@ -1,3 +1,1 @@
-console.log("bye bye")
-console.log("testing testing")
-console.log("testing testing 1")
+console.log("why cant we get along ?")
