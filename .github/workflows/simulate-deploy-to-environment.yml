@@ -5,6 +5,9 @@ on:
     branches:
       - sisk-environments
 
+env:
+  ENV: test
+
 jobs:
   sim-deploy:
     name: Simulate a deploy job and tag github environment
@@ -88,7 +91,7 @@ jobs:
           - package-a
           - package-b
     environment:
-      name: dev/${{matrix.package}}
+      name: $ENV/${{matrix.package}}
       url: http://test.example
     steps:
       - name: test
