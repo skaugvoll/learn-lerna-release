@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev-${{matrix.package}}
-      url: test.example/${{matric.packages}}
+      url: test.example/${{matrix.packages}}
     strategy:
       matrix:
         package:
