@@ -17,7 +17,9 @@ jobs:
   sim-matrix-deploy-dynamic-envs:
     name: Simulate a deploy job and tag github environment
     runs-on: ubuntu-latest
-    environment: dev-${{matrix.package}}
+    environment:
+      name: dev-${{matrix.package}}
+      url: test.example/${{matric.packages}}
     strategy:
       matrix:
         package:
@@ -78,3 +80,17 @@ jobs:
             echo "All jobs in deploy-failes was a success"
             exit 0
           fi
+  test-forward-slash:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - package-a
+          - package-b
+    environment:
+      name: dev/${{matrix.package}}
+      url: http://test.example
+    steps:
+      - name: test
+        run: |
+          echo "deploying ${{matrix.package}}"
