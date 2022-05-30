@@ -91,7 +91,7 @@ jobs:
           - package-a
           - package-b
     environment:
-      name: ${{ENV}}/${{matrix.package}}
+      name: ${{env.ENV}}/${{matrix.package}}
       url: http://test.example
     steps:
       - name: test
