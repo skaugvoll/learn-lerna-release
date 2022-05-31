@@ -1,6 +1,6 @@
 # learn-lerna-release
-![deploy-to-gh-env](https://github.com/skaugvoll/learn-lerna-release/actions/workflows/simulate-deploy-to-environment.yml/badge.svg)
-![sem-ver](https://github.com/skaugvoll/learn-lerna-release/actions/workflows/sem-ver.yml/badge.svg)
+![deploy-to-gh-env](https://github.com/skaugvoll/learn-lerna-release/actions/workflows/simulate-deploy-to-environment.yml/badge.svg?branch=sisk-environments)
+![sem-ver](https://github.com/skaugvoll/learn-lerna-release/actions/workflows/sem-ver.yml/badge.svg?branch=sisk-environments)
 ![create-release-deploy](https://github.com/skaugvoll/learn-lerna-release/actions/workflows/create-release-deploy.yml/badge.svg)
 ![deploy-prod](https://github.com/skaugvoll/learn-lerna-release/actions/workflows/deploy-prod.yml/badge.svg)
 
