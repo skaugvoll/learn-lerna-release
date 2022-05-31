@@ -1,0 +1,99 @@
+name: Simulate deploy to github environment
+
+on:
+  push:
+    branches:
+      - sisk-environments
+
+env:
+  ENV: test
+
+jobs:
+  sim-deploy:
+    name: Simulate a deploy job and tag github environment
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Simulate step that deployes
+        run: |
+          echo "Simulate deployment, what does the job.environment do now?"
+  sim-matrix-deploy-dynamic-envs:
+    name: Simulate a deploy job and tag github environment
+    runs-on: ubuntu-latest
+    environment:
+      name: dev-${{matrix.package}}
+      url: test.example/${{matrix.packages}}
+    strategy:
+      matrix:
+        package:
+          - package-a
+          - package-b
+    steps:
+      - name: Simulate step that deployes
+        run: |
+          echo "Simulate ${{matrix.package}} deployment, what does the job.environment do now?"
+  sim-matrix-deploy-static-env:
+    name: Simulate a deploy job and tag github environment
+    runs-on: ubuntu-latest
+    environment: dev-matrix-static
+    strategy:
+      matrix:
+        package:
+          - package-a
+          - package-b
+    steps:
+      - name: Simulate step that deployes
+        run: |
+          echo "Simulate ${{matrix.package}} deployment, what does the job.environment do now?"
+  deploy-failes:
+    name: simulate that one of two job deploy-failes
+    runs-on: ubuntu-latest
+    # continue-on-error: true
+    strategy:
+      fail-fast: false # allow one or more jobs to fail, and still run the others
+      matrix:
+        include:
+          - package: a
+            status: 0 # ok
+          - package: b
+            status: 1 # failess
+    steps:
+      - name: echo-matrix-values
+        run: |
+          echo ${{matrix.package}} ${{matrix.status}} ${{matrix.status != 0 }}
+          if [ ${{matrix.status}} == 0 ]; then
+            exit 0
+          else 
+            exit 1
+          fi
+  set-deploy-status:
+    if: ${{ always() }}
+    needs: [deploy-failes]
+    runs-on: ubuntu-latest
+    environment: manual-deploy-mark
+    steps:
+      - name: mark deploy status
+        run: |
+          echo ${{needs.deploy-failes.result}}
+          if [ ${{ needs.deploy-failes.result }} != 'success' ]
+          then
+            echo "One or more jobs from deploy-failes failed"
+            exit 1
+          else
+            echo "All jobs in deploy-failes was a success"
+            exit 0
+          fi
+  test-forward-slash:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - package-a
+          - package-b
+    environment:
+      name: ${{matrix.package}}
+      url: http://test.example
+    steps:
+      - name: test
+        run: |
+          echo "deploying ${{matrix.package}}"
