@@ -30,6 +30,7 @@ runs:
         set +e # dont exit on error (lerna changes no changes, exits with 1 (error))
         changes=npx lerna changed --all --json
         echo "CHANGES: $changes"
+        echo "$ ? --> $?"
         if [ $? -eq 1 ]
         then
           $matrix=[]
