@@ -27,15 +27,17 @@ runs:
       id: find_changed_packages
       shell: bash
       run: |
-        matrix=$((npx lerna changed --all --json) | jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))')
-        echo "matrix before: $matrix"
-        if [ -z $matrix ]
+        changes=npx lerna changed --all --json
+        echo "CHANGES: $changes"
+        if [ $? -eq 1 ]
         then
           $matrix=[]
+        else:
+          matrix= echo $changes | jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))')
+          echo "::set-output name=matrix::$matrix"
         end
         fi
-        echo "matrix after: $matrix"
-        echo "::set-output name=matrix::$matrix"
+        echo "matrix $matrix"
         exit 0 # if gotten here, exit as successfull
 
 ## Deploy all apps EXCEPT template
