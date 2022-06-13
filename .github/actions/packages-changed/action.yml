@@ -40,7 +40,7 @@ runs:
           # exit 0 # if gotten here, exit as successfull
         else
           echo "Should run jq"
-          matrix=$(jq '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))' $tempFile)
+          matrix=$(jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))' $tempFile)
           echo "build matrix: $matrix"
           echo "::set-output name=matrix::$matrix"
           # exit 0 # if gotten here, exit as successfull
