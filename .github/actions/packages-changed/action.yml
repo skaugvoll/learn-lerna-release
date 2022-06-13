@@ -21,8 +21,8 @@ runs:
       uses: actions/setup-node@v2
       with:
         node-version: 16
-        cache: "npm"
-        cache-dependency-path: "**/.github/actions/packages-changed/action.yml"
+        # cache: "npm"
+        # cache-dependency-path: "**/.github/actions/packages-changed/action.yml"
     - name: Expose matrix of changed packages
       id: find_changed_packages
       shell: bash
