@@ -27,6 +27,7 @@ runs:
       id: find_changed_packages
       shell: bash
       run: |
+        set +e # dont exit on error (lerna changes no changes, exits with 1 (error))
         changes=npx lerna changed --all --json
         echo "CHANGES: $changes"
         if [ $? -eq 1 ]
