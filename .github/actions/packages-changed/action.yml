@@ -28,8 +28,15 @@ runs:
       shell: bash
       run: |
         matrix=$((npx lerna changed --all --json) | jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))')
-        echo $matrix
+        echo "matrix before: $matrix"
+        if [ -z $matrix ]
+        then
+          $matrix=[]
+        end
+        fi
+        echo "matrix after: $matrix"
         echo "::set-output name=matrix::$matrix"
+        exit 0 # if gotten here, exit as successfull
 
 ## Deploy all apps EXCEPT template
 # matrix=$((npx lerna changed --all --json) | jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))')
