@@ -31,17 +31,18 @@ runs:
         set +e # dont exit on error (lerna changes no changes, exits with 1 (error))
         changes=npx lerna changed --all --json > $tempFile
         cat $tempFile
-        echo "$ ? --> $?"
+        matrix=""
         if [ $? -eq 1 ]
         then
           echo "[]" > $tempFile
         else:
-          matrix=jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))' $tempFile
-          echo "::set-output name=matrix::$matrix"
+          matrix=$(jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))' $tempFile)
+          echo "build matrix: $matrix"
         end
         fi
         echo "matrix $matrix"
         rm $tempFile
+        echo "::set-output name=matrix::$matrix"
         exit 0 # if gotten here, exit as successfull
 
 ## Deploy all apps EXCEPT template
