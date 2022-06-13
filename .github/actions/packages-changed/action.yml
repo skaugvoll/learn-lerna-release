@@ -27,22 +27,25 @@ runs:
       id: find_changed_packages
       shell: bash
       run: |
-        tempFile=changed.json
         set +e # dont exit on error (lerna changes no changes, exits with 1 (error))
-        changes=npx lerna changed --all --json > $tempFile
+        tempFile=changed.json
+        changes=npx lerna changed --all --json >$tempFile
+        echo "$: $?"
+        echo "tempFile: "
         cat $tempFile
         matrix=""
-        if [ $? -eq 1 ]
-        then
-          echo "[]" > $tempFile
-        else:
-          matrix=$(jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))' $tempFile)
+        if [ $? -eq 1 ]; then
+          echo "[]" >$tempFile
+          echo "::set-output name=matrix::$matrix"
+          # exit 0 # if gotten here, exit as successfull
+        else
+          echo "Should run jq"
+          matrix=$(jq '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))' $tempFile)
           echo "build matrix: $matrix"
-        end
+          echo "::set-output name=matrix::$matrix"
+          # exit 0 # if gotten here, exit as successfull
         fi
-        echo "matrix $matrix"
         rm $tempFile
-        echo "::set-output name=matrix::$matrix"
         exit 0 # if gotten here, exit as successfull
 
 ## Deploy all apps EXCEPT template
