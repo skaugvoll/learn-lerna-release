@@ -27,15 +27,16 @@ runs:
       id: find_changed_packages
       shell: bash
       run: |
+        tempFile=changed.json
         set +e # dont exit on error (lerna changes no changes, exits with 1 (error))
-        changes=npx lerna changed --all --json
-        echo "CHANGES: $changes"
+        changes=npx lerna changed --all --json > $tempFile
+        cat $tempFile
         echo "$ ? --> $?"
         if [ $? -eq 1 ]
         then
-          $matrix=[]
+          echo "[]" > $tempFile
         else:
-          matrix= echo $changes | jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))')
+          matrix=jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))' $tempFile
           echo "::set-output name=matrix::$matrix"
         end
         fi
