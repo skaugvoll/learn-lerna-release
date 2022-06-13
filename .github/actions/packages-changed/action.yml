@@ -41,6 +41,7 @@ runs:
         end
         fi
         echo "matrix $matrix"
+        rm $tempFile
         exit 0 # if gotten here, exit as successfull
 
 ## Deploy all apps EXCEPT template
