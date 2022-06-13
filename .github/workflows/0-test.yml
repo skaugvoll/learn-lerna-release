@@ -4,6 +4,7 @@ on:
     types: [opened, synchronize]
     branches:
       - main
+      - test-0-changes
 
 env:
   GH_TOKEN: ${{ secrets.LERNA_RELEASE_TOKEN }}
