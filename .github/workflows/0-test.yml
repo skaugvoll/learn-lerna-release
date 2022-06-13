@@ -1,0 +1,34 @@
+name: Publish
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+env:
+  GH_TOKEN: ${{ secrets.LERNA_RELEASE_TOKEN }}
+
+jobs:
+  pre:
+    name: Create Matrix of changed Packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: get-changed-packages
+        uses: ./.github/actions/packages-changed
+      - name: Print changed packages
+        run: |
+          echo ${{ steps.get-changed-packages.outputs.matrix }}
+    outputs:
+      matrix: ${{ steps.get-changed-packages.outputs.matrix }}
+  build:
+    needs: pre
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: ${{ fromJSON(needs.pre.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: print-pkg
+        run: |
+          echo "pkg: ${{ matrix.package }}"

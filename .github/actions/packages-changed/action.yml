@@ -1,0 +1,54 @@
+name: Expose Changed Packages
+description: |
+  List local packages that have changed since the last tagged release
+  Uses lerna cmd, to find changed packages. 
+  Then exposes the package names as array<String>
+  to use for dynamic strategy matrix.
+  E.g. ['agreement', 'common', ...]
+
+outputs:
+  matrix:
+    description: "List of changed packages"
+    value: ${{ steps.find_changed_packages.outputs.matrix }}
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Use Nodejs
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
+        # cache: "npm"
+        # cache-dependency-path: "**/.github/actions/packages-changed/action.yml"
+    - name: Expose matrix of changed packages
+      id: find_changed_packages
+      shell: bash
+      run: |
+        tempFile=changed.json
+        set +e # dont exit on error (lerna changes no changes, exits with 1 (error))
+        changes=npx lerna changed --all --json > $tempFile
+        cat $tempFile
+        echo "$ ? --> $?"
+        if [ $? -eq 1 ]
+        then
+          echo "[]" > $tempFile
+        else:
+          matrix=jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))' $tempFile
+          echo "::set-output name=matrix::$matrix"
+        end
+        fi
+        echo "matrix $matrix"
+        rm $tempFile
+        exit 0 # if gotten here, exit as successfull
+
+## Deploy all apps EXCEPT template
+# matrix=$((npx lerna changed --all --json) | jq -c '[.[] | .location | split("/") | .[-1] ] | del(.[] | select(. == "template"))')
+
+## Only deploy selected apps
+# matrix=$((npx lerna changed --all --json) | jq -c '[.[] | .location | split("/") | .[-1] ] | [.[] |  select((. == "dev") or (. == "stage")) ]')
+
+## Only deploy messages app
+# matrix=$((npx lerna changed --all --json) | jq -c '[.[] | .location | split("/") | .[-1] ] | [.[] |  select((. == "prod")) ]')
