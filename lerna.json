@@ -1,6 +1,6 @@
 {
   "npmClient": "npm",
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "!**/template"],
   "version": "independent",
   "command": {
     "publish": {
