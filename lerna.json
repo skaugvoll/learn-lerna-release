@@ -9,7 +9,7 @@
     "version": {
       "allowBranch": ["main", "production", "ignore-package-template"],
       "message": "chore(release): release",
-      "ignoreChanges": ["**/*.md", ".env"]
+      "ignoreChanges": ["**/*.md", ".env", "packages/template"]
     }
   }
 }
