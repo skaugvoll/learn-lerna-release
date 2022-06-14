@@ -1,26 +1,15 @@
 {
   "npmClient": "npm",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "independent",
   "command": {
     "publish": {
-      "ignoreChanges": [
-        "*.md",
-        ".env"
-      ]
+      "ignoreChanges": ["*.md", ".env"]
     },
     "version": {
-      "allowBranch": [
-        "main",
-        "production"
-      ],
+      "allowBranch": ["main", "production", "ignore-package-template"],
       "message": "chore(release): release",
-      "ignoreChanges": [
-        "**/*.md",
-        ".env"
-      ]
+      "ignoreChanges": ["**/*.md", ".env"]
     }
   }
 }
