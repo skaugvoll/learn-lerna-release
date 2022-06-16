@@ -1,6 +1,6 @@
 {
   "npmClient": "npm",
-  "packages": ["packages/*", "!**/template"],
+  "packages": ["packages/*"],
   "version": "independent",
   "command": {
     "publish": {
@@ -9,7 +9,7 @@
     "version": {
       "allowBranch": ["main", "production", "ignore-package-template"],
       "message": "chore(release): release",
-      "ignoreChanges": ["**/*.md", ".env", "packages/template"]
+      "ignoreChanges": ["**/*.md", ".env", "packages/template/**"]
     }
   }
 }
