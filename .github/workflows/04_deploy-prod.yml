@@ -25,8 +25,11 @@ jobs:
           git pull
           git checkout main
           git merge production
-          git add .
-          git commit -m "chore(release): update to stable-release"
+          echo "git add || true"
+          git add . || true
+          echo "git commit || true"
+          git commit -m "chore(release): update to stable-release" || true
+          echo "git push"
           git push
 
   deploy:
