@@ -1,0 +1,30 @@
+name: Print github context on release
+on:
+  release:
+    types:
+      - released
+      - prereleased
+
+jobs:
+  prereleased:
+    if: github.event.action == 'prereleased'
+    runs-on: ubuntu-latest
+    steps:
+      - name: print GH context
+        env:
+          GH_CTX: ${{ toJSON(github) }}
+          GH_REF: ${{ github.ref }}
+        run: |
+          echo "1. $GH_CTX"
+          echo "2. $GH_REF"
+  released:
+    if: github.event.action == 'released'
+    runs-on: ubuntu-latest
+    steps:
+      - name: print GH context
+        env:
+          GH_CTX: ${{ toJSON(github) }}
+          GH_REF: ${{ github.ref }}
+        run: |
+          echo "1. $GH_CTX"
+          echo "2. $GH_REF"
