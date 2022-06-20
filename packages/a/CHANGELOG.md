@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-beta.0](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.3-beta.1...a@1.5.0-beta.0) (2022-06-20)
+
+
+### Features
+
+* faak off ([f1a262d](https://github.com/skaugvoll/learn-lerna-release/commit/f1a262d8ad0747dbd8b8e8d3efa31255e3200bc9))
+
+
+
+
+
 ## [1.4.3](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.3-beta.0...a@1.4.3) (2022-06-20)
 
 **Note:** Version bump only for package a
