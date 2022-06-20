@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2-beta.0](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.0-beta.0...a@1.4.2-beta.0) (2022-06-20)
+
+
+### Bug Fixes
+
+* update /a/pkg.json version and index.js ([18d9ddb](https://github.com/skaugvoll/learn-lerna-release/commit/18d9ddbf1c3746a7eaf1c0c1f8ede2f7bfab8cdb))
+
+
+
+
+
 # [1.4.0-beta.0](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.3.1-beta.2...a@1.4.0-beta.0) (2022-06-20)
 
 ### Features
