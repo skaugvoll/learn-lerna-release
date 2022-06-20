@@ -6,3 +6,4 @@ console.log(
 console.log(
   "why does it always work for a reasonable amount of time before breaking ???"
 );
+console.log("test");
