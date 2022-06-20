@@ -43,7 +43,11 @@ jobs:
         run: |
           npx lerna version --conventional-commits --conventional-graduate --create-release github --yes
           npx lerna publish from-git --create-release github --yes
-
+      - name: "update main with package.json stable version"
+        if: ${{ github.base_ref == 'production' }}
+        run: |
+          echo "SHOULD PRINT OUT PACKAGE.JSON change, because semantic versioning has update pkg.json.version"
+          git status
       # # since all our packages are private, this will never run, see Readme.md
       # - name: Publish release
       #   run: npx lerna publish from-git --create-release github --yes

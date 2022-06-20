@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2-beta.0](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.0-beta.0...a@1.4.2-beta.0) (2022-06-20)
+
+
+### Bug Fixes
+
+* update /a/pkg.json version and index.js ([18d9ddb](https://github.com/skaugvoll/learn-lerna-release/commit/18d9ddbf1c3746a7eaf1c0c1f8ede2f7bfab8cdb))
 # [1.4.0](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.0-beta.0...a@1.4.0) (2022-06-20)
 
 **Note:** Version bump only for package a
@@ -41,10 +47,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-<<<<<<< HEAD
 
 - # **changes:** trigger workflow, with 2 packages changed ([04368f9](https://github.com/skaugvoll/learn-lerna-release/commit/04368f9fdc401973cd9acd30f92985d5ba11cc2c))
-  > > > > > > > production
 - **testing:** push number 2 on main branch ([0ec054d](https://github.com/skaugvoll/learn-lerna-release/commit/0ec054d51f589229262a5ec5890049c2968aa4ad))
 - **test:** testing creating two merge requests from main to production ([b4bfe68](https://github.com/skaugvoll/learn-lerna-release/commit/b4bfe68cc929f1b039a6bd16a17114decbf37d22))
 
