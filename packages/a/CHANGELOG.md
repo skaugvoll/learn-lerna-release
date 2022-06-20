@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.3](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.3-beta.0...a@1.4.3) (2022-06-20)
+
+**Note:** Version bump only for package a
+
+
+
+
+
+## [1.4.3-beta.0](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.2...a@1.4.3-beta.0) (2022-06-20)
+
+
+### Bug Fixes
+
+* try to automerge production back into master ([6322616](https://github.com/skaugvoll/learn-lerna-release/commit/63226162c31056b1fe1d7f962d0af4cc5afec957))
+
+
+
+
+
 ## [1.4.2](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.2-beta.0...a@1.4.2) (2022-06-20)
 
 **Note:** Version bump only for package a
