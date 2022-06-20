@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/skaugvoll/learn-lerna-release/compare/b@1.3.1-beta.1...b@1.3.1) (2022-06-20)
+
+**Note:** Version bump only for package b
+
+
+
+
+
 ## [1.3.1-beta.1](https://github.com/skaugvoll/learn-lerna-release/compare/b@1.3.1-beta.0...b@1.3.1-beta.1) (2022-05-13)
 
 
