@@ -6,6 +6,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [1.4.3](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.3-beta.0...a@1.4.3) (2022-06-20)
 
 **Note:** Version bump only for package a
+## [1.4.3-beta.1](https://github.com/skaugvoll/learn-lerna-release/compare/a@1.4.3-beta.0...a@1.4.3-beta.1) (2022-06-20)
+
+
+### Bug Fixes
+
+* test ([24914c9](https://github.com/skaugvoll/learn-lerna-release/commit/24914c99e91284b3be81b9aa14a8c13fc342d773))
 
 
 
