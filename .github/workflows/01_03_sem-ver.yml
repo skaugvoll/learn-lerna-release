@@ -43,23 +43,21 @@ jobs:
         run: |
           npx lerna version --conventional-commits --conventional-graduate --create-release github --yes
           npx lerna publish from-git --create-release github --yes
-      - name: "update main with package.json stable version"
-        if: ${{ github.base_ref == 'production' }}
-        run: |
-          git config --global user.name ${{github.actor}}
-          git config --global user.email '${{github.actor}}@users.noreply.github.com'
-          git checkout main
-          git status
-          git add .
-          git commit -m "chore(release): update to stable-release"
-          git push
-        # id: automerge
-        # uses: "pascalgn/automerge-action@v0.15.3"
-        # env:
-        #   GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        ##2022-06-20T13:12:21.670Z INFO  Event name: pull_request
-        ##2022-06-20T13:12:21.672Z INFO  Action ignored: pull_request closed
-        ##2022-06-20T13:12:21.672Z INFO  Action result: { mergeResult: 'skipped' }
+      # - name: "update main with package.json stable version"
+      #   if: ${{ github.base_ref == 'production' }}
+      #   run: |
+      #     git checkout main
+      #     git status
+      #     git add .
+      #     git commit -m "chore(release): update to stable-release"
+      #     git push
+      # id: automerge
+      # uses: "pascalgn/automerge-action@v0.15.3"
+      # env:
+      #   GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      ##2022-06-20T13:12:21.670Z INFO  Event name: pull_request
+      ##2022-06-20T13:12:21.672Z INFO  Action ignored: pull_request closed
+      ##2022-06-20T13:12:21.672Z INFO  Action result: { mergeResult: 'skipped' }
 
       # # since all our packages are private, this will never run, see Readme.md
       # - name: Publish release

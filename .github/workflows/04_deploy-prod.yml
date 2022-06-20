@@ -9,6 +9,26 @@ on:
   #     - production
 
 jobs:
+  update-main-with-new-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: "update main with package.json stable version"
+        # if: ${{ github.base_ref == 'production' }}
+        run: |
+          git branch --show-current
+          git config --global user.name ${{github.actor}}
+          git config --global user.email '${{github.actor}}@users.noreply.github.com'
+          git checkout production
+          git pull
+          git checkout main
+          git merge production
+          git add .
+          git commit -m "chore(release): update to stable-release"
+          git push
+
   deploy:
     runs-on: ubuntu-latest
     steps:
