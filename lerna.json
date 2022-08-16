@@ -1,26 +1,15 @@
 {
   "npmClient": "npm",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "independent",
   "command": {
     "publish": {
-      "ignoreChanges": [
-        "*.md",
-        ".env"
-      ]
+      "ignoreChanges": ["*.md", ".env"]
     },
     "version": {
-      "allowBranch": [
-        "main",
-        "production"
-      ],
+      "allowBranch": ["main", "production", "sisk-new-lerna-version"],
       "message": "chore(release): release",
-      "ignoreChanges": [
-        "**/*.md",
-        ".env"
-      ]
+      "ignoreChanges": ["**/*.md", ".env"]
     }
   }
 }
