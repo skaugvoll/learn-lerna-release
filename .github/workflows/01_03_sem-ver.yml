@@ -43,6 +43,7 @@ jobs:
         run: |
           npx lerna version --conventional-commits --conventional-graduate --create-release github --yes
           npx lerna publish from-git --create-release github --yes
+
       # - name: "update main with package.json stable version"
       #   if: ${{ github.base_ref == 'production' }}
       #   run: |
