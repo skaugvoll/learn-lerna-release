@@ -36,7 +36,9 @@ jobs:
 
       - name: "pre-release"
         if: ${{ github.base_ref == 'main' }}
-        run: npx lerna version --conventional-commits --conventional-prerelease --preid beta --create-release github --yes
+        run: |
+          # npx lerna version --conventional-commits --conventional-prerelease --preid beta --create-release github --yes
+          npx lerna version --no-commit-hooks --ignore-scripts --conventional-commits --conventional-prerelease --preid beta --create-release github --yes
 
       - name: "release"
         if: ${{ github.base_ref == 'production' }}
